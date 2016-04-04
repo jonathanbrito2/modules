@@ -1,0 +1,208 @@
+function! SKEL_spec()
+        0r /usr/share/vim/current/skeletons/skeleton.spec
+        language time en_US
+        if $USER != ''
+            let login = $USER
+        elseif $LOGNAME != ''
+            let login = $LOGNAME
+        else
+            let login = 'unknown'
+        endif
+        let newline = stridx(login, "\n")
+        if newline != -1
+            let login = strpart(login, 0, newline)
+        endif
+        if $HOSTNAME != ''
+            let hostname = $HOSTNAME
+        else
+            let hostname = system('hostname -f')
+            if v:shell_error
+                let hostname = 'localhost'
+            endif
+        endif
+        let newline = stridx(hostname, "\n")
+        if newline != -1
+            let hostname = strpart(hostname, 0, newline)
+        endif
+        exe "%s/specCURRENT_YEAR/" . strftime("%Y") . "/ge" 
+        exe "%s/specRPM_CREATION_DATE/" . strftime("%a\ %b\ %d\ %Y") . "/ge"
+        exe "%s/specRPM_CREATION_AUTHOR_MAIL/" . login . "@" . hostname . "/ge"
+        exe "%s/specRPM_CREATION_NAME/" . expand("%:t:r") . "/ge"
+        setf spec
+endfunction
+
+syntax on
+set number
+set ruler
+set showmatch
+set showmode
+set esckeys
+set nocompatible
+set backspace=indent,eol,start
+
+if &term =~ "xterm"
+    let myterm = "xterm"
+elseif &term =~ "screen"
+    let myterm = "screen"
+else
+    let myterm =  &term
+endif
+let myterm = substitute(myterm, "cons[0-9][0-9].*$",  "linux", "")
+let myterm = substitute(myterm, "cons[0-9][0-9].*$",  "linux", "")
+let myterm = substitute(myterm, "vt1[0-9][0-9].*$",   "vt100", "")
+let myterm = substitute(myterm, "vt2[0-9][0-9].*$",   "vt220", "")
+let myterm = substitute(myterm, "\\([^-]*\\)[_-].*$", "\\1",   "")
+
+if myterm == "xterm" || myterm == "kvt" || myterm == "gnome"
+    " keys in insert/command mode.
+    map! <ESC>Oo  :
+    map! <ESC>Oj  *
+    map! <ESC>Om  -
+    map! <ESC>Ok  +
+    map! <ESC>Ol  ,
+    map! <ESC>OM  
+    map! <ESC>Ow  7
+    map! <ESC>Ox  8
+    map! <ESC>Oy  9
+    map! <ESC>Ot  4
+    map! <ESC>Ou  5
+    map! <ESC>Ov  6
+    map! <ESC>Oq  1
+    map! <ESC>Or  2
+    map! <ESC>Os  3
+    map! <ESC>Op  0
+    map! <ESC>On  .
+    " keys in normal mode
+    map <ESC>Oo  :
+    map <ESC>Oj  *
+    map <ESC>Om  -
+    map <ESC>Ok  +
+    map <ESC>Ol  ,
+    map <ESC>OM  
+    map <ESC>Ow  7
+    map <ESC>Ox  8
+    map <ESC>Oy  9
+    map <ESC>Ot  4
+    map <ESC>Ou  5
+    map <ESC>Ov  6
+    map <ESC>Oq  1
+    map <ESC>Or  2
+    map <ESC>Os  3
+    map <ESC>Op  0
+    map <ESC>On  .
+endif
+
+if myterm == "xterm" || myterm == "kvt" || myterm == "gnome"
+    map! <Esc>[H  <Home>
+    map! <Esc>[F  <End>
+    map! <Esc>[1~ <Home>
+    map! <Esc>[4~ <End>
+    map! <Esc>[A  <Up>
+    map! <Esc>[B  <Down>
+    map! <Esc>[C  <Right>
+    map! <Esc>[D  <Left>
+    map! <Esc>[E  <Insert>
+    map <ESC>[H  0
+    map <ESC>[F  $
+    map <ESC>[1~ 0
+    map <ESC>[4~ $
+    map <ESC>[A  k
+    map <ESC>[B  j
+    map <ESC>[C  l
+    map <ESC>[D  h
+    map <ESC>[E  i
+endif
+
+if myterm == "xterm" || myterm == "kvt" || myterm == "gnome"
+    map! <Esc>OH <Home>
+    map! <Esc>OF <End>
+    map! <ESC>O2H <Home>
+    map! <ESC>O2F <End>
+    map! <ESC>O5H <Home>
+    map! <ESC>O5F <End>
+    map! <Esc>[2;2~ <Insert>
+    map! <Esc>[3;2~ <Delete>
+    map! <Esc>[2;5~ <Insert>
+    map! <Esc>[3;5~ <Delete>
+    map! <Esc>O2A <PageUp>
+    map! <Esc>O2B <PageDown>
+    map! <Esc>O2C <S-Right>
+    map! <Esc>O2D <S-Left>
+    map! <Esc>O5A <PageUp>
+    map! <Esc>O5B <PageDown>
+    map! <Esc>O5C <S-Right>
+    map! <Esc>O5D <S-Left>
+    map! <Esc>OE <Insert>
+    map <ESC>OH  0
+    map <ESC>OF  $
+    map <ESC>O2H  0
+    map <ESC>O2F  $
+    map <ESC>O5H  0
+    map <ESC>O5F  $
+    map <Esc>[2;2~ i
+    map <Esc>[3;2~ x
+    map <Esc>[2;5~ i
+    map <Esc>[3;5~ x
+    map <ESC>O2A  ^B
+    map <ESC>O2B  ^F
+    map <ESC>O2D  b
+    map <ESC>O2C  w
+    map <ESC>O5A  ^B
+    map <ESC>O5B  ^F
+    map <ESC>O5D  b
+    map <ESC>O5C  w
+    map <ESC>OE  i
+endif
+
+if myterm == "linux"
+    map! <Esc>[G  <Insert>
+    map <ESC>[G  i
+endif
+
+if myterm == "screen"
+    map! <ESC>[1;2D <S-Left>
+    map! <ESC>[1;2C <S-Right>
+    map! <ESC>[1;2A <S-Up>
+    map! <ESC>[1;2B <S-Down>
+    map! <ESC>[1;2H <Home>
+    map! <ESC>[1;2F <End>
+    map! <ESC>[2;2~ <Insert>
+    map! <ESC>[3;2~ <Delete>
+    map! <ESC>[5;2~ <PageUp>
+    map! <ESC>[6;2~ <PageDown>
+    map! <ESC>[1;5D <C-Left>
+    map! <ESC>[1;5C <C-Right>
+    map! <ESC>[1;5A <C-Up>
+    map! <ESC>[1;5B <C-Down>
+    map! <ESC>[1;5H <Home>
+    map! <ESC>[1;5F <End>
+    map! <ESC>[2;5~ <Insert>
+    map! <ESC>[3;5~ <Delete>
+    map! <ESC>[5;5~ <PageUp>
+    map! <ESC>[6;5~ <PageDown>
+    map! <ESC>[1;3D <A-Left>
+    map! <ESC>[1;3C <A-Right>
+    map! <ESC>[1;3A <A-Up>
+    map! <ESC>[1;3B <A-Down>
+    map! <ESC>[1;3H <Home>
+    map! <ESC>[1;3F <End>
+    map! <ESC>[2;3~ <Insert>
+    map! <ESC>[3;3~ <Delete>
+    map! <ESC>[5;3~ <PageUp>
+    map! <ESC>[6;3~ <PageDown>
+endif
+
+map! <Esc>[3~ <Delete>
+map  <ESC>[3~    x
+
+if has("autocmd") 
+  autocmd BufReadPost * 
+    \ if line("'\"") > 0 && line("'\"") <= line("$") | 
+    \   exe "normal g`\"" | 
+    \ endif 
+ 
+endif " has("autocmd")
+
+set nomodeline
+
+autocmd BufNewFile      *.spec  call SKEL_spec()

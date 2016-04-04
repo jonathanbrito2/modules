@@ -1,0 +1,14 @@
+{
+  "name": "dexter-utils",
+  "version": "1.0.0",
+  "author": "Curso Gerência de Configurações com Puppet",
+  "summary": "Módulo utilizado para manter instalado pacotes padrão para servidores da empresa Dexter Courier.",
+  "license": "Apache 2.0",
+  "source": "",
+  "project_page": null,
+  "issues_url": null,
+  "dependencies": [
+
+  ]
+}
+

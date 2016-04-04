@@ -1,0 +1,7 @@
+driftfile /var/lib/ntp/drift
+statistics loopstats peerstats clockstats
+
+server ntp.ancinerj.gov.br iburst
+
+includefile /etc/ntp/crypto/pw
+keys /etc/ntp/keys

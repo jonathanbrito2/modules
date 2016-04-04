@@ -1,0 +1,22 @@
+Port 22
+ListenAddress ::
+GatewayPorts no
+X11Forwarding yes
+X11DisplayOffset 10
+X11UseLocalhost yes
+Banner /etc/issue
+PrintMotd no
+KeepAlive yes
+SyslogFacility auth
+LogLevel info
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_dsa_key
+KeyRegenerationInterval 3600
+StrictModes yes
+LoginGraceTime 120
+MaxAuthTries	6
+MaxAuthTriesLog	3
+PermitEmptyPasswords no
+PasswordAuthentication yes
+PermitRootLogin no
+Subsystem	sftp	internal-sftp

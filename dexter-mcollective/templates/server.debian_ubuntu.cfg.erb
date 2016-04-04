@@ -1,0 +1,21 @@
+main_collective = mcollective
+collectives = mcollective
+libdir = /usr/share/mcollective/plugins
+logfile = /var/log/mcollective.log
+loglevel = info
+daemonize = 1
+
+securityprovider = psk
+plugin.psk = ancine.gov.br
+
+connector = activemq
+plugin.activemq.pool.size = 1
+plugin.activemq.pool.1.host = puppetmaster.ancine.gov.br
+plugin.activemq.pool.1.port = 61613
+plugin.activemq.pool.1.user = admin
+plugin.activemq.pool.1.password = 4linux
+
+#factsource = facter
+factsource = yaml
+plugin.yaml = /etc/mcollective/facts.yaml
+identity = <%= @fqdn %>

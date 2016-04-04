@@ -1,0 +1,38 @@
+# repositorio centos
+
+[base]
+name=CentOS 6 Base x86_64
+baseurl=http://mirror/repo/centos/6/os/x86_64
+enabled=1
+gpgcheck=0
+exclude=puppet*,zabbix*
+
+[updates]
+name=CentOS 6 Updates x86_64
+baseurl=http://mirror/repo/centos/6/updates/x86_64
+enabled=1
+gpgcheck=0
+exclude=puppet*,zabbix*
+
+# repositorio epel, pacotes extras enterprise
+
+[epel]
+name=CentOS 6 EPEL x86_64
+baseurl=http://mirror/repo/epel/centos/6/os/x86_64
+enabled=1
+gpgcheck=0
+exclude=puppet*
+
+# puppet-agent packages from http://yum.puppetlabs.com/
+
+[puppet-products]
+name=CentOS 6 PuppetLabs Packages x86_64
+baseurl=http://mirror/repo/puppet/6/products/x86_64
+enabled=1
+gpgcheck=0
+
+[puppet-dependencies]
+name=CentOS 6 PuppetLabs Packages x86_64
+baseurl=http://mirror/repo/puppet/6/dependencies/x86_64
+enabled=1
+gpgcheck=0

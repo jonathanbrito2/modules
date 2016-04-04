@@ -1,0 +1,8 @@
+server 192.168.0.203 mode 5 prefer
+
+driftfile /var/lib/ntp/drift/ntp.drift
+
+logfile   /var/log/ntp
+keys /etc/ntp.keys		
+trustedkey 1			
+requestkey 1			

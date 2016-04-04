@@ -1,0 +1,13 @@
+{
+  "name": "brito-snmp",
+  "version": "1.0.0",
+  "author": "Jonathan Brito",
+  "summary": "Ancine",
+  "license": "Apache 2.0",
+  "source": "",
+  "project_page": null,
+  "issues_url": null,
+  "dependencies": [
+  ]
+}
+

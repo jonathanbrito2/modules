@@ -1,0 +1,11 @@
+[puppet-products]
+name=CentOS 7 PuppetLabs Packages x86_64
+baseurl=http://mirror/repo/puppet/7/products/x86_64
+enabled=1
+gpgcheck=0
+
+[puppet-dependencies]
+name=CentOS 7 PuppetLabs Packages x86_64
+baseurl=http://mirror/repo/puppet/7/dependencies/x86_64
+enabled=1
+gpgcheck=0

@@ -1,0 +1,6 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+10.1.125.245	mirrorh7	mirrorh7.ancinerj.gov.br
+10.1.125.245	rh7		rh7.ancinerj.gov.br
+10.1.125.244	mirror		mirror.ancinerj.gov.br
+10.1.125.242	puppetmaster	puppetmaster.ancine.gov.br

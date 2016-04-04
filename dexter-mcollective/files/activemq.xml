@@ -1,0 +1,46 @@
+<beans
+  xmlns="http://www.springframework.org/schema/beans"
+  xmlns:amq="http://activemq.apache.org/schema/core"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+  http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd">
+
+    <!-- Allows us to use system properties as variables in this configuration file -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"/>
+    
+    <broker xmlns="http://activemq.apache.org/schema/core"
+            brokerName="localhost"
+            dataDirectory="${activemq.base}/data">
+
+        <plugins>
+        <simpleAuthenticationPlugin>
+            <users>
+                <authenticationUser username="mcollective" password="4linux" groups="servers,clients,everyone" />
+                <authenticationUser username="admin" password="4linux" groups="servers,everyone" />
+            </users>
+        </simpleAuthenticationPlugin>
+        <authorizationPlugin>
+            <map>
+                <authorizationMap>
+                   <authorizationEntries>
+			<authorizationEntry queue=">" write="admins" read="admins" admin="admins" />
+			<authorizationEntry topic=">" write="admins" read="admins" admin="admins" />
+			<authorizationEntry queue="mcollective.>" write="clients" read="clients" admin="clients" />
+			<authorizationEntry topic="mcollective.>" write="clients" read="clients" admin="clients" />
+			<authorizationEntry queue="mcollective.nodes" read="servers" admin="servers" />
+			<authorizationEntry queue="mcollective.reply.>" write="servers" admin="servers" />
+			<authorizationEntry topic="mcollective.*.agent" read="servers" admin="servers" />
+			<authorizationEntry topic="mcollective.registration.agent" write="servers" read="servers" admin="servers" />
+			<authorizationEntry topic="ActiveMQ.Advisory.>" read="everyone" write="everyone" admin="everyone" />	
+                   </authorizationEntries>
+                </authorizationMap>
+            </map>
+        </authorizationPlugin>
+        </plugins>
+
+        <transportConnectors>
+           <transportConnector name="openwire" uri="tcp://127.0.0.1:61616"/> 
+	    <transportConnector name="stomp+nio" uri="stomp+nio://[::0]:61613"/>
+        </transportConnectors>
+    </broker>
+</beans>

@@ -1,0 +1,19 @@
+main_collective = mcollective
+collectives = mcollective
+libdir = /usr/share/mcollective/plugins
+logger_type = console
+loglevel = warn
+
+securityprovider = psk
+plugin.psk = ancine.gov.br
+
+connector = activemq
+plugin.activemq.pool.size = 1
+plugin.activemq.pool.1.host = <%= @hostname %> 
+plugin.activemq.pool.1.port = 61613
+plugin.activemq.pool.1.user = mcollective
+plugin.activemq.pool.1.password = 4linux
+
+#factsource = facter
+factsource = yaml
+plugin.yaml = /etc/mcollective/facts.yaml

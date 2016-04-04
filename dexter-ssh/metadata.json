@@ -1,0 +1,14 @@
+{
+  "name": "dexter-ssh",
+  "version": "1.0.0",
+  "author": "Curso Gerência de Configurações com Puppet",
+  "summary": "Módulo utilizado para manter instalado e configurado o serviço SSH nos servidores da empresa Dexter Courier.",
+  "license": "Apache 2.0",
+  "source": "",
+  "issues_url": null,
+  "project_page": null,
+  "dependencies": [
+
+  ]
+}
+
