@@ -1,5 +1,7 @@
 class dexter-utils { 
 
+# TESTE
+
 $package_debian_ubuntu = [ 'tzdata','dnsutils','bash-completion','unzip','bzip2','htop','vim','mlocate','nfs-common' ]
 $package_centos = [ 'tzdata','bind-utils','unzip','bzip2','vim-enhanced','mlocate','nfs-utils' ]
 $package_opensuse = [ 'bind-utils','unzip','bzip2','vim','mlocate','nfs-client','htop' ]
