@@ -1,0 +1,14 @@
+{
+  "name": "brito-gnome",
+  "version": "1.0.0",
+  "author": "Jonathan Brito",
+  "summary": "Instala o GNOME em Sistemas RH 7.",
+  "license": "Apache 2.0",
+  "source": "https://github.com/jonathanbrito2/modules.git",
+  "project_page": "https://github.com/jonathanbrito2/modules",
+  "issues_url": "https://github.com/jonathanbrito2/modules/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+
